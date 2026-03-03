@@ -1,28 +1,24 @@
-# 📚 PHASE ONE: Basic Loan Eligibility System (Without JWT)
+#  PHASE ONE: Basic Loan Eligibility System 
 
-## 🏦 Loan Eligibility System - Phase 1
+## Loan Eligibility System - Phase 1
 A robust backend API system that automatically determines loan eligibility based on financial data analysis. This system simulates real banking logic using risk assessment formulas and decision engines.
-
+---
+#  Project Structure
+```
+loan-system/
+├── src/main/java/com/loan/system/
+│   ├── controller/      # REST Endpoints
+│   ├── service/         # Business Logic
+│   ├── model/           # Entities
+│   ├── dto/             # Data Transfer Objects
+│   └── rules/           # Risk Assessment Logic
+├── src/main/resources/
+│   └── application.properties
+└── pom.xml
+```
 ---
 
-## 📋 Table of Contents
-* [Overview](#-overview)
-* [Features](#-features)
-* [Tech Stack](#️-tech-stack)
-* [System Architecture](#-system-architecture)
-* [Business Logic](#-business-logic)
-* [API Endpoints](#-api-endpoints)
-* [Database Schema](#-database-schema)
-* [Installation Guide](#-installation-guide)
-* [Running the Application](#-running-the-application)
-* [Testing with Postman](#-testing-with-postman)
-* [Sample Test Cases](#-sample-test-cases)
-* [Project Structure](#-project-structure)
-* [Deployment Options](#-deployment-options)
-
----
-
-## 🎯 Overview
+##  Overview
 This is a **loan eligibility prediction system** that acts like a robotic loan officer. Instead of humans manually deciding who gets a loan, this system automatically evaluates applicants based on:
 
 * 💰 **Monthly Income (Salary)**
@@ -38,23 +34,23 @@ The system then decides: **APPROVED ✅**, **REJECTED ❌**, or **MANUAL REVIEW 
 ## ✨ Features
 
 ### ### Core Features
-* ✅ **Automated Loan Decision Engine** - Makes instant decisions based on financial rules.
-* ✅ **Risk Assessment Calculator** - Evaluates applicant risk (Low/Medium/High/Very High).
-* ✅ **DTI Ratio Analysis** - Calculates Debt-to-Income percentage.
-* ✅ **Disposable Income Calculator** - Determines money left after expenses.
-* ✅ **Credit Score Rating** - Categorizes scores (Excellent/Good/Fair/Poor).
-* ✅ **Detailed Decision Reasons** - Explains the "Why" behind the status.
-* ✅ **Recommended Loan Amount** - Suggests a safe amount based on profile.
-* ✅ **Complete CRUD Operations** - For user financial profiles.
+* **Automated Loan Decision Engine** - Makes instant decisions based on financial rules.
+* **Risk Assessment Calculator** - Evaluates applicant risk (Low/Medium/High/Very High).
+* **DTI Ratio Analysis** - Calculates Debt-to-Income percentage.
+* **Disposable Income Calculator** - Determines money left after expenses.
+* **Credit Score Rating** - Categorizes scores (Excellent/Good/Fair/Poor).
+* **Detailed Decision Reasons** - Explains the "Why" behind the status.
+* **Recommended Loan Amount** - Suggests a safe amount based on profile.
+* **Complete CRUD Operations** - For user financial profiles.
 
 ### ### Business Features
-* 📊 **Real Banking Logic** - Simulates actual bank risk assessment.
-* 🔄 **Rule-Based Engine** - Configurable business rules.
-* 👤 **User Profile Management** - Securely store financial history.
+* **Real Banking Logic** - Simulates actual bank risk assessment.
+* **Rule-Based Engine** - Configurable business rules.
+* **User Profile Management** - Securely store financial history.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Technology | Version | Purpose |
 | :--- | :--- | :--- |
@@ -68,7 +64,7 @@ The system then decides: **APPROVED ✅**, **REJECTED ❌**, or **MANUAL REVIEW 
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ### Logic Flow
 User Input (JSON) → Controller (REST) → Service (Logic) → Decision Engine (Rules) → Database (Save) → Response (Result)
@@ -91,7 +87,7 @@ User Input (JSON) → Controller (REST) → Service (Logic) → Decision Engine 
                         └──────────────────┘
 ```
 
-🧠 Business Logic
+# Business Logic
 ### Core Formulas
 Debt-to-Income Ratio (DTI):
 DTI = (Monthly Expenses ÷ Monthly Salary) × 100
@@ -108,22 +104,22 @@ ELSE IF creditScore > 720 AND DTI < 40% → APPROVED
 ELSE → MANUAL REVIEW
 ```
 
-# 🔌 API Endpoints
+# API Endpoints
 Base URL: http://localhost:8080/api
 
-## 📌 API Endpoints
+## API Endpoints
 
 | Method | Endpoint              | Description                     | Auth Required |
 |--------|-----------------------|---------------------------------|---------------|
-| POST   | /loan/apply           | Apply for a new loan            | ❌ No         |
-| GET    | /loan/{id}            | Get loan decision by ID         | ❌ No         |
-| GET    | /loan/health          | System health check             | ❌ No         |
-| PUT    | /loan/user/{userId}   | Update user profile             | ❌ No         |
+| POST   | /loan/apply           | Apply for a new loan            |  No         |
+| GET    | /loan/{id}            | Get loan decision by ID         |  No         |
+| GET    | /loan/health          | System health check             |  No         |
+| PUT    | /loan/user/{userId}   | Update user profile             |  No         |
 
 
-# 📦 Database Schema
+#  Database Schema
 ### Table: user_financial_profiles
-## 📊 Database Schema — user_financial_profiles
+##  Database Schema — user_financial_profiles
 
 | Column        | Type      | Constraints        | Description              |
 |--------------|-----------|-------------------|--------------------------|
@@ -133,7 +129,7 @@ Base URL: http://localhost:8080/api
 | salary       | DECIMAL   | NOT NULL           | Monthly salary           |
 | credit_score | INT       | NOT NULL           | 300–850 range            |
 
-# 📥 Installation Guide
+#  Installation Guide
 ### Step 1: Clone the Repository
 Bash
 ```
@@ -164,7 +160,7 @@ Bash
 ./mvnw spring-boot:run
 ```
 
-# 🧪 Sample Test Case
+#  Sample Test Case
 Request: POST /api/loan/apply
 ```
 {
@@ -188,27 +184,15 @@ expected output
     "message": "Congratulations! Your loan has been approved."
 }
 ```
-# 📁 Project Structure
-```
-loan-system/
-├── src/main/java/com/loan/system/
-│   ├── controller/      # REST Endpoints
-│   ├── service/         # Business Logic
-│   ├── model/           # Entities
-│   ├── dto/             # Data Transfer Objects
-│   └── rules/           # Risk Assessment Logic
-├── src/main/resources/
-│   └── application.properties
-└── pom.xml
-```
-# 📊 Project Status
-✅ Phase 1 Complete - Basic Loan Eligibility System
 
-⏳ Phase 2 - JWT Authentication (Coming Soon)
+#  Project Status
+ Phase 1 Complete - Basic Loan Eligibility System
 
-⏳ Phase 3 - Admin Dashboard
+Phase 2 - JWT Authentication (Coming Soon)
 
-👨‍💻 Author
+Phase 3 - Admin Dashboard
+
+Author
 Ntlemo Durksie
 
 GitHub: @durksie
