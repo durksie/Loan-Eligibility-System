@@ -75,6 +75,29 @@ public class LoanService {
         userFinancialProfile.setCreditScore(loanRequestDto.getCreditScore());
         return userFinancialProfileRepo.save(userFinancialProfile);
     }
+//to create a new user profile
+    @Transactional
+    public UserFinancialProfile createUserProfile(UserProfileDto userProfileDto) {
+
+        // Check if email already exists
+        if (userFinancialProfileRepo.findByEmail(userProfileDto.getEmail()).isPresent()) {
+            throw new RuntimeException("User with this email already exists");
+        }
+
+        UserFinancialProfile userFinancialProfile = new UserFinancialProfile();
+        userFinancialProfile.setName(userProfileDto.getName());
+        userFinancialProfile.setEmail(userProfileDto.getEmail());
+        userFinancialProfile.setSalary(userProfileDto.getSalary());
+        userFinancialProfile.setExpenses(userProfileDto.getExpenses());
+        userFinancialProfile.setCreditScore(userProfileDto.getCreditScore());
+        userFinancialProfile.setUpdateAt(LocalDateTime.now());
+
+        UserFinancialProfile savedUser = userFinancialProfileRepo.save(userFinancialProfile);
+
+        log.info("Created new user profile with ID: {}", savedUser.getId());
+
+        return savedUser;
+    }
 
     public  LoanResponseDto getLoanDecision(Long id){
         LoanApplication loanApplication=loanApplicationRepo.findById(id).orElseThrow(()-> new RuntimeException("Loan application not found with ID: "+ id));
