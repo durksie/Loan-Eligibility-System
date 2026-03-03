@@ -21,17 +21,17 @@ loan-system/
 ##  Overview
 This is a **loan eligibility prediction system** that acts like a robotic loan officer. Instead of humans manually deciding who gets a loan, this system automatically evaluates applicants based on:
 
-* 💰 **Monthly Income (Salary)**
-* 💸 **Monthly Expenses**
-* 📊 **Credit Score**
-* 📈 **Debt-to-Income Ratio (DTI)**
-* 💵 **Disposable Income**
+*  **Monthly Income (Salary)**
+*  **Monthly Expenses**
+*  **Credit Score**
+*  **Debt-to-Income Ratio (DTI)**
+*  **Disposable Income**
 
-The system then decides: **APPROVED ✅**, **REJECTED ❌**, or **MANUAL REVIEW 🤔**
+The system then decides: **APPROVED **, **REJECTED **, or **MANUAL REVIEW **
 
 ---
 
-## ✨ Features
+##  Features
 
 ### ### Core Features
 * **Automated Loan Decision Engine** - Makes instant decisions based on financial rules.
