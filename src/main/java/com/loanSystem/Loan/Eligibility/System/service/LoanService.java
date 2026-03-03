@@ -75,7 +75,7 @@ public class LoanService {
         userFinancialProfile.setCreditScore(loanRequestDto.getCreditScore());
         return userFinancialProfileRepo.save(userFinancialProfile);
     }
-//to create a new user profile
+//create a new user profile
     @Transactional
     public UserFinancialProfile createUserProfile(UserProfileDto userProfileDto) {
 
